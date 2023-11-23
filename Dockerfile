@@ -1,4 +1,4 @@
-FROM nvidia/cuda:10.2-cudnn7-devel-ubuntu18.04
+FROM nvidia/cuda:11.3-runtime-ubuntu18.04
 
 WORKDIR /
 
@@ -25,7 +25,8 @@ RUN apt install python3.7 -y --no-install-recommends && \
     echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
 RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 RUN python get-pip.py
-RUN pip install --no-cache-dir torch==1.10.0+cu102 torchvision==0.11.1+cu102 torchaudio==0.10.0+cu102 -f https://download.pytorch.org/whl/torch_stable.html
+# Update the PyTorch installation line to match CUDA 11.3 compatibility
+RUN pip install --no-cache-dir torch torchvision torchaudio -f https://download.pytorch.org/whl/cu113/torch_stable.html
 RUN pip install --no-cache-dir -U jupyterlab ipywidgets jupyter-archive
 RUN jupyter nbextension enable --py widgetsnbextension
 RUN jupyter labextension disable "@jupyterlab/apputils-extension:announcements"
