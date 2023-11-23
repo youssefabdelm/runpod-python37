@@ -23,6 +23,7 @@ RUN apt install python3.7 -y --no-install-recommends && \
 	ln -s /usr/bin/python3.7 /usr/bin/python3 && \
     apt-get clean && rm -rf /var/lib/apt/lists/* && \
     echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
+RUN apt-get install python3-distutils
 RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 RUN python get-pip.py
 # Update the PyTorch installation line to match CUDA 11.3 compatibility
