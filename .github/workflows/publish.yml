@@ -1,7 +1,7 @@
 name: publish
 on: [push]
 jobs:
-  publish-runpod-template-pytorch2-image:
+  publish-runpod-python37-image:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -10,8 +10,8 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Build the runpod-template-pytorch2 Docker image
+          password: ${{ secrets.token }}
+      - name: Build the runpod-python37 Docker image
         run: |
-          docker build . --tag ghcr.io/kesar/runpod-template-pytorch2:latest
-          docker push ghcr.io/kesar/runpod-template-pytorch2:latest
+          docker build . --tag ghcr.io/youssefabdelm/runpod-python37:latest
+          docker push ghcr.io/youssefabdelm/runpod-python37:latest
