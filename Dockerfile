@@ -23,7 +23,7 @@ RUN apt install python3.7 -y --no-install-recommends && \
 	ln -s /usr/bin/python3.7 /usr/bin/python3 && \
     apt-get clean && rm -rf /var/lib/apt/lists/* && \
     echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
-#RUN apt-get install python3-distutils
+RUN apt-get install python3-distutils
 RUN apt-get update && \
     apt-get install -y libpython3.7-stdlib && \
     apt-get clean && \
